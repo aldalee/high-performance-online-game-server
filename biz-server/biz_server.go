@@ -1,11 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"github.com/aldalee/high-performance-online-game-server/comm/log"
+	"os"
+	"path"
 )
 
 func main() {
-	fmt.Println("start business server")
-	log.Println("start business server")
+	exe, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	log.Config(path.Dir(exe) + "/logs/biz-server")
+	log.Info("start business server")
 }
